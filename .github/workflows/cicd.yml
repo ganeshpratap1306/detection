@@ -3,16 +3,17 @@ name: Docker Image CI
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    paths: 
+      - '**'
+  workflow_dispatch:
 
 jobs:
 
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latestd
 
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build . --file Dockerfile --tag detection-url:$(date +%s)
